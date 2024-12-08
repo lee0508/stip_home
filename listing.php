@@ -123,6 +123,34 @@ if (isset($_GET['lang'])) {
             <img src="assets/images/logo.svg" alt="logo" />
           </a>
         </div>
+        <div class="burger-menu-wrapper">
+          <img src="assets/images/mobile/menu.svg" class="burger-menu" alt="burger-menu"
+            onclick="handleBurgerMenu()">
+          <div class="side-bar-container">
+            <div class="sidebar-background">
+              <div class="close-btn">
+                <img src="assets/images/mobile/close.svg" alt="close" onclick="handleBurgerMenuClose()">
+              </div>
+            </div>
+            <div class="side-bar-wrapper">
+              <nav class="side-bar-section">
+                <div class="side-bar-list">
+                  <a class="side-bar-item navigate" href="listing.php">Listing</a>
+                  <a class="side-bar-item navigate" href="about.php">About us</a>
+                  <a class="side-bar-item navigate" href="product.php">Product</a>
+                  <a class="side-bar-item navigate" href="contact.php">Contact</a>
+                </div>
+                <!-- 언어 선택 드롭다운 -->
+                <select id="language-selector" class="side-bar-list lang" onchange="setLanguage(this.value)" class="form-select">
+                  <option value="ko" <?= $selectedLang === 'ko' ? 'selected' : ''; ?>>한국어</option>
+                  <option value="en" <?= $selectedLang === 'en' ? 'selected' : ''; ?>>English</option>
+                  <option value="ja" <?= $selectedLang === 'ja' ? 'selected' : ''; ?>>日本語</option>
+                  <option value="zh" <?= $selectedLang === 'zh' ? 'selected' : ''; ?>>中文</option>
+                </select>
+              </nav>
+            </div>
+          </div>
+        </div>
         <nav class="header-nav">
           <ul>
             <li><a class="nav-item navigate" href="listing.php">Listing</a></li>
@@ -301,6 +329,7 @@ if (isset($_GET['lang'])) {
       "Ownership",
       "Innovation",
     ];
+
     const swiperContainer = document.getElementById("swiperContainer");
 
     const swiperWrapper = document.getElementById("swiperWrapper");
@@ -366,7 +395,7 @@ if (isset($_GET['lang'])) {
           e.target.textContent;
       });
   </script>
-  <script src="./components/header.js" defer></script>
+  <!-- <script src="./components/header.js" defer></script> -->
 </body>
 
 </html>
