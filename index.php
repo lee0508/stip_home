@@ -95,6 +95,174 @@ if (isset($_GET['lang'])) {
         a {
             text-decoration: none;
         }
+
+        /* content-section 스타일 */
+        .content-container .content-section {
+            position: absolute;
+            left: 15.625%;
+            top: 25%;
+
+            @media screen and (max-width: 768px) {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* logo-slider-section 스타일 */
+        /* .logo-slider-section {
+            width: 100%;
+            margin-top: auto;
+            padding: 50px 0;
+            position: relative;
+        } */
+
+        /* 슬라이더 컨테이너 */
+        /* .slider-container {
+            position: relative;
+            max-width: 1920px;
+            margin: 0 auto;
+        } */
+
+        /* 그라데이션 오버레이 */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 200px;
+            top: -52px;
+            width: 26.042%;
+            max-width: 500px;
+        }
+
+        .gradient-left {
+            left: 0;
+            background: rgba(0, 0, 0, 1);
+            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6587) 70%, transparent 100%);
+            mask-repeat: no-repeat;
+            filter: blur(100px);
+        }
+
+        .gradient-right {
+            right: 0;
+            background: rgba(0, 0, 0, 1);
+            mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 1) 100%);
+            mask-repeat: no-repeat;
+            filter: blur(120px);
+        }
+
+        /* 하단 그라데이션 */
+        .bottom-gradient {
+            position: absolute;
+            bottom: 0;
+            padding-top: 240px;
+            width: 100%;
+            /* z-index: 1; */
+            background: radial-gradient(50% 32% at 50% 100%, #009DFF 0%, rgba(0, 217, 255, 0.25) 53%, rgba(0, 119, 255, 0.15) 79%, rgba(0, 178, 255, 0) 100%);
+        }
+
+        /* logo-slider-section 스타일 */
+        .logo-slider-section {
+            width: 100%;
+            margin-top: 80px;
+            /* 버튼과 간격 확보를 위해 마진 추가 */
+            padding: 50px 0;
+            position: relative;
+            z-index: -1;
+        }
+
+        /* 슬라이더 컨테이너 */
+        .slider-container {
+            position: relative;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding-top: 460px;
+            /* 상단 여백 추가 */
+        }
+
+        /* 버튼 영역 간격 확보 */
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 30px;
+            /* 슬라이더와의 간격 확보 */
+
+            @media screen and (max-width: 768px) {
+                gap: 16px;
+                margin-bottom: 20px;
+                /* 모바일 환경에서 간격 조정 */
+            }
+        }
+
+        .content-bottom .buttons .normal-button {
+            z-index: 9999;
+        }
+
+        .content-bottom .buttons .normal-button:hover {
+            cursor: pointer;
+            background: orange;
+            color: #fcfcfc;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .content-bottom .buttons .watch-video-area {
+            z-index: 9999;
+        }
+
+        /* .content-bottom .buttons .watch-video-area:hover {
+            cursor: pointer;
+            background-color: #009DFF;
+            color: #fcfcfc;
+        } */
+
+        /* watch-video-area 스타일 */
+        .watch-video-area {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .watch-video-area span {
+            color: var(--white-color);
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            /* 밑줄을 추가하기 위해 position 설정 */
+
+            @media screen and (max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+
+        /* 마우스 호버 시 밑줄 효과 */
+        .watch-video-area span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            /* 글씨 아래 간격 */
+            left: 0;
+            width: 0;
+            /* 기본 상태에서 너비 0 */
+            height: 2px;
+            /* 밑줄 두께 */
+            background-color: var(--primary-color);
+            /* 밑줄 색상 */
+            transition: width 0.3s ease;
+            /* 밑줄 애니메이션 */
+        }
+
+        .watch-video-area:hover span::after {
+            width: 100%;
+            /* 마우스 호버 시 밑줄 전체 너비 */
+        }
     </style>
     <script>
         function setLanguage(lang) {
@@ -203,7 +371,7 @@ if (isset($_GET['lang'])) {
                             <p>The seeds of progress begin with you</p>
                         </div>
                         <div class="buttons">
-                            <a href="listing.html">
+                            <a href="listing.php">
                                 <button class="normal-button" style="width: 180px;">
                                     Listing
                                 </button>
@@ -301,12 +469,13 @@ if (isset($_GET['lang'])) {
 
         const swiper = new Swiper('.swiper', {
             autoplay: {
-                delay: 0, //add
-                disableOnInteraction: false,
+                delay: 0, // 자동 재생 딜레이 시간
+                disableOnInteraction: false, // 사용자 상호작용 시에도 자동 재생 유지
             },
             breakpoints: {
+                // 화면 크기별 슬라이드 설정
                 900: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                     spaceBetween: 10,
                 },
                 1100: {
@@ -318,17 +487,44 @@ if (isset($_GET['lang'])) {
                     spaceBetween: 10,
                 },
             },
-            responsive: [{
-                breakpoint: 900,
-                slidesPerView: 3,
-                spaceBetween: 10,
-            }, ],
-            speed: 10000,
-            loop: true,
-            loopAdditionalSlides: 1,
-            slidesPerView: 3,
-            spaceBetween: 10,
-        })
+            speed: 10000, // 슬라이드 애니메이션 속도
+            loop: true, // 슬라이드 반복
+            loopAdditionalSlides: 1, // 추가 반복 슬라이드 개수
+            slidesPerView: 3, // 기본 슬라이드 개수
+            spaceBetween: 10, // 슬라이드 간격
+        });
+
+
+        // const swiper = new Swiper('.swiper', {
+        //     autoplay: {
+        //         delay: 0, //add
+        //         disableOnInteraction: false,
+        //     },
+        //     breakpoints: {
+        //         900: {
+        //             slidesPerView: 4,
+        //             spaceBetween: 10,
+        //         },
+        //         1100: {
+        //             slidesPerView: 5,
+        //             spaceBetween: 10,
+        //         },
+        //         1200: {
+        //             slidesPerView: 6,
+        //             spaceBetween: 10,
+        //         },
+        //     },
+        //     responsive: [{
+        //         breakpoint: 900,
+        //         slidesPerView: 3,
+        //         spaceBetween: 10,
+        //     }, ],
+        //     speed: 10000,
+        //     loop: true,
+        //     loopAdditionalSlides: 1,
+        //     slidesPerView: 3,
+        //     spaceBetween: 10,
+        // })
     </script>
     <!-- <script src="./components/header.js" defer></script> -->
 </body>
