@@ -1,8 +1,11 @@
 <?php
 session_start(); // 세션 시작
+require_once 'language.php';
 
 require 'vendor/autoload.php'; // Composer의 autoload 파일
 use GeoIp2\Database\Reader;
+
+
 
 function getUserCountryCode()
 {
@@ -297,10 +300,10 @@ if (isset($_GET['lang'])) {
                         <div class="side-bar-wrapper">
                             <nav class="side-bar-section">
                                 <div class="side-bar-list">
-                                    <a class="side-bar-item navigate" href="listing.php">Listing</a>
-                                    <a class="side-bar-item navigate" href="about.php">About us</a>
-                                    <a class="side-bar-item navigate" href="product.php">Product</a>
-                                    <a class="side-bar-item navigate" href="contact.php">Contact</a>
+                                    <a class="side-bar-item navigate" href="listing.php"><?= $lang['listing'] ?></a>
+                                    <a class="side-bar-item navigate" href="about.php"><?= $lang['about_us'] ?></a>
+                                    <a class="side-bar-item navigate" href="product.php"><?= $lang['product'] ?></a>
+                                    <a class="side-bar-item navigate" href="contact.php"><?= $lang['contact'] ?></a>
                                 </div>
                                 <!-- 언어 선택 드롭다운 -->
                                 <select id="language-selector" class="side-bar-list lang" onchange="setLanguage(this.value)" class="form-select">
@@ -315,10 +318,10 @@ if (isset($_GET['lang'])) {
                 </div>
                 <nav class="header-nav">
                     <ul>
-                        <li><a class="nav-item navigate" href="listing.php">Listing</a></li>
-                        <li><a class="nav-item navigate" href="about.php">About us</a></li>
-                        <li><a class="nav-item navigate" href="product.php">Product</a></li>
-                        <li><a class="nav-item navigate" href="contact.php">Contact</a></li>
+                        <li><a class="nav-item navigate" href="listing.php"><?= $lang['listing'] ?></a></li>
+                        <li><a class="nav-item navigate" href="about.php"><?= $lang['about_us'] ?></a></li>
+                        <li><a class="nav-item navigate" href="product.php"><?= $lang['product'] ?></a></li>
+                        <li><a class="nav-item navigate" href="contact.php"><?= $lang['contact'] ?></a></li>
                     </ul>
                     <!-- 언어 선택 드롭다운 -->
                     <select id="language-selector" class="dropdown" onchange="setLanguage(this.value)" class="form-select">
@@ -345,13 +348,15 @@ if (isset($_GET['lang'])) {
                 <div class="content-wrapper">
                     <div class="logo-wrapper">
                         <img src="assets/images/small-logo.svg" alt="logo" />
+                        <!--<p><?php $lang['meet_stip'] ?></p>-->
                         <p>Meet <span>STIP</span></p>
                     </div>
                     <div class="content-text">
                         <p class="letter-title">
                             <span class="strong">S</span>
-                            <span>hare your wisdom with the world</span>
+                            <span><?= $lang['share_wisdom'] ?></span>
                         </p>
+                        <!-- <span>hare your wisdom with the world</span> -->
                         <p class="letter-title">
                             <span class="strong">T</span>
                             <span>he seeds of progress begin with you</span>
