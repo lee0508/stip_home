@@ -1,0 +1,57 @@
+현재 코드는 메뉴가 4개 있고 메뉴에 해당하는
+페이지별 html 파일이 있습니다.
+해당 페이지별 영어,한국어,일본어,중국어로 
+코드를 작성하고자 합니다.
+제가 작성한 html 헤드 코드와 자바스크립트 코드,
+그리고 언어에 해당하는 json 파일을 기준으로
+index.html, listing.html,product.html,contact.html
+페이지별 언어별로 자바스크립트와 json 코드를 수정해 주세요.
+contact-contact.html
+<script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   fetch("components/header.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //       document.getElementById("header-placeholder").innerHTML = data;
+    //     });
+    // });
+    // const selectBox = document.querySelector(".select-box");
+    // const boxArea = selectBox.querySelector(".box-area");
+    // const selectedBox = boxArea.querySelector(".selected-item");
+    // const dropdown = selectBox.querySelector("ul");
+    // const dropdownItems = dropdown.querySelectorAll(".select-item");
+
+    // boxArea.addEventListener("click", () => {
+    //   dropdown.classList.toggle("active");
+    //   selectBox.classList.toggle("active");
+    // });
+
+    // dropdown.addEventListener("click", (e) => {
+    //   const item = e.target.closest(".select-item");
+    //   if (!item) return;
+    //   boxArea.classList.remove("empty");
+    //   selectedBox.innerHTML = item.innerHTML;
+    //   dropdown.classList.remove("active");
+    //   selectBox.classList.remove("active");
+    // });    
+  </script>
+
+
+1.이메일 실시간 유효성 검사
+2.국가별 전화번호 형식 자동 적용
+3.현재 선택된 언어에 따른 결제 폼 업데이트
+4.통화 표시 및 금액 포맷팅
+5.에러 메시지 다국어 지원
+
+1.각 국가별 통화 단위 적용
+2.소수점 자릿수 조정 (JPY, KRW는 0, USD와 CNY는 2)
+3.통화 변환 기능 추가
+4.국가별 로케일 설정
+5.각 통화별 적절한 표시 형식 적용
+
+실제 운영 환경에서는:
+
+1.실시간 환율 API 연동 필요
+2.결제 시 기준 통화 설정
+3.환전 수수료 고려
+4.환율 변동에 대한 처리
